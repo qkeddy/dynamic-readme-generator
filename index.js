@@ -37,7 +37,12 @@ const questions = [
         default: "MIT License",
         name: "license",
     },
-    { type: "input", message: "What is your project title?\n", default: "My Cool Project", name: "title" },
+    {
+        type: "input",
+        message: "What is your project title?\n",
+        default: "My Cool Project",
+        name: "title"
+    },
     {
         type: "input",
         message: `Please provide a brief description explaining the what, why, and how of your project. Use the following questions as a guide:
@@ -48,16 +53,24 @@ const questions = [
         default: "This project does cool things.",
         name: "description",
     },
-
-    { type: "input", message: "What are the steps required to deploy your project? Provide a step-by-step description of how to get the development environment running.\n", default: "This project has no steps to deploy.", name: "deploymentSteps" },
+    {
+        type: "input",
+        message: "What are the steps required to deploy your project? Provide a step-by-step description of how to get the development environment running.\n",
+        default: "This project has no steps to deploy.",
+        name: "deploymentSteps"
+    },
     {
         type: "input",
         message: "Does your project have any special features? Add a semicolons between each feature.\n",
         default: "This project does not have any special features to highlight.",
         name: "features",
     },
-
-    { type: "input", message: "Provide instructions and examples for use. Note that screenshots can be added after the readme is generated.\n", default: "Open index.html with your web browser or equivalent.", name: "projectUse" },
+    {
+        type: "input",
+        message: "Provide instructions and examples for use. Note that screenshots can be added after the readme is generated.\n",
+        default: "Open index.html with your web browser or equivalent.",
+        name: "projectUse",
+    },
     {
         type: "input",
         message: "Are there any tests or test results that should be highlighted? Add a semicolons between each test.\n",
@@ -108,7 +121,7 @@ ${collaborators}
 
 ## How to Contribute
 
-If you would like to contribute to this project. Please email me at ${email}. If you would like to contribute to future projects, please follow me at ${gitHubUrl} 
+If you would like to contribute to this project. Please email me at ${email}. If you would like to contribute to future projects, please follow me at ${gitHubUrl}.
 
 It is requested that all contributors adhere to the standards outlined in the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 `;
