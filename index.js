@@ -77,9 +77,10 @@ const questions = [
 const readmeTemplate = ({ email, gitHubUrl, title, description, deploymentSteps, features, projectUse, tests, collaborators }) =>
     `![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
 
-    # ${title}
+# ${title}
 
-## ${description}
+## Description
+${description}
 
 ## Table of Contents
 
@@ -93,22 +94,17 @@ const readmeTemplate = ({ email, gitHubUrl, title, description, deploymentSteps,
 ## Deployment
 ${deploymentSteps}
 
-
 ## Features
 ${features}
-
 
 ## Usage
 ${projectUse}
 
-
 ## Tests
 ${tests}
 
-
 ## Credits
 ${collaborators}
-
 
 ## How to Contribute
 
@@ -128,8 +124,6 @@ function init() {
     inquirer.prompt(questions).then((response) => {
         writeToFile(response);
     });
-
-    // Validate that they were answered
 }
 
 // Function call to initialize app
