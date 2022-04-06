@@ -16,36 +16,6 @@ const questions = [
         default: "https://github.com/name",
         name: "gitHubUrl",
     },
-
-    { type: "input", message: "What is your project title?\n", default: "My Cool Project", name: "title" },
-
-    {
-        type: "input",
-        message: `Please provide a brief description explaining the what, why, and how of your project. Use the following questions as a guide:
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?\n`,
-        default: "This project does cool things.",
-        name: "description",
-    },
-
-    { type: "input", message: "What are the steps required to deploy your project? Provide a step-by-step description of how to get the development environment running.\n", default: "This project has no steps to deploy.", name: "deploymentSteps" },
-
-    { type: "input", message: "Provide instructions and examples for use. Note that screenshots can be added after the readme is generated.\n", default: "Open index.html with your web browser or equivalent.", name: "projectUse" },
-    {
-        type: "input",
-        message:
-            "Please list your collaborators, if any, with links to their GitHub profiles. Additionally, if you used any third-party assets that require attribution, list the creators with links to their primary web presence. Use the format 'Collaborator|GitHub Link' or 'Resource|Resource Link' with semicolons between each reference.\n",
-        default: "This project was independently built.",
-        name: "collaborators",
-    },
-    {
-        type: "input",
-        message: "Are there any tests or test results that should be highlighted? Add a semicolons between each test.\n",
-        default: "There are currently no tests to share.",
-        name: "tests",
-    },
     {
         type: "list",
         message: "What type of license should be applied?\n",
@@ -67,19 +37,84 @@ const questions = [
         default: "MIT License",
         name: "license",
     },
+    { type: "input", message: "What is your project title?\n", default: "My Cool Project", name: "title" },
+    {
+        type: "input",
+        message: `Please provide a brief description explaining the what, why, and how of your project. Use the following questions as a guide:
+- What was your motivation?
+- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
+- What problem does it solve?
+- What did you learn?\n`,
+        default: "This project does cool things.",
+        name: "description",
+    },
+
+    { type: "input", message: "What are the steps required to deploy your project? Provide a step-by-step description of how to get the development environment running.\n", default: "This project has no steps to deploy.", name: "deploymentSteps" },
     {
         type: "input",
         message: "Does your project have any special features? Add a semicolons between each feature.\n",
         default: "This project does not have any special features to highlight.",
         name: "features",
     },
+
+    { type: "input", message: "Provide instructions and examples for use. Note that screenshots can be added after the readme is generated.\n", default: "Open index.html with your web browser or equivalent.", name: "projectUse" },
+    {
+        type: "input",
+        message: "Are there any tests or test results that should be highlighted? Add a semicolons between each test.\n",
+        default: "There are currently no tests to share.",
+        name: "tests",
+    },
+    {
+        type: "input",
+        message:
+            "Please list your collaborators, if any, with links to their GitHub profiles. Additionally, if you used any third-party assets that require attribution, list the creators with links to their primary web presence. Use the format 'Collaborator|GitHub Link' or 'Resource|Resource Link' with semicolons between each reference.\n",
+        default: "This project was independently built.",
+        name: "collaborators",
+    },
 ];
 
 // Define HTML template
-const readmeTemplate = ({ title, description }) =>
-    `# ${title}
+const readmeTemplate = ({ email, gitHubUrl, title, description, deploymentSteps, features, projectUse, tests, collaborators }) =>
+    `![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+
+    # ${title}
 
 ## ${description}
+
+## Table of Contents
+
+- [Deployment](#deployment)
+- [Features](#features)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Credits](#credits)
+- [How to Contribute](#how-to-contribute)
+
+## Deployment
+${deploymentSteps}
+
+
+## Features
+${features}
+
+
+## Usage
+${projectUse}
+
+
+## Tests
+${tests}
+
+
+## Credits
+${collaborators}
+
+
+## How to Contribute
+
+If you would like to contribute to this project. Please email me at ${email}. If you would like to contribute to future projects, please follow me at ${gitHubUrl} 
+
+It is requested that all contributors adhere to the standards outlined in the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 `;
 
 // Write the HTML to a file
