@@ -1,0 +1,23 @@
+{
+  "name": "dynamic-readme-generator",
+  "version": "1.0.0",
+  "description": "A readme generator to create consistent markdown that is written in Node.js.",
+  "main": "gen-readme.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qkeddy/dynamic-readme-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qkeddy/dynamic-readme-generator/issues"
+  },
+  "homepage": "https://github.com/qkeddy/dynamic-readme-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2"
+  }
+}
