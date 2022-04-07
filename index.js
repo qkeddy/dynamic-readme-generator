@@ -51,11 +51,7 @@ const questions = [
     },
     {
         type: "input",
-        message: `Please provide a brief description explaining the what, why, and how of your project. Use the following questions as a guide:
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?\n`,
+        message: `Please provide a brief description explaining the what, why, and how of your project. Use the following questions as a guide:\n- What was your motivation?\n- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")\n- What problem does it solve?- What did you learn?\n`,
         default: "This project does cool things.",
         name: "description",
     },
@@ -134,6 +130,8 @@ It is requested that all contributors adhere to the standards outlined in the [C
 
 // Write the HTML to a file
 function writeToFile(response) {
+
+    // TODO Convert this to nested promises that ask if there are additional elements to add (see notes on Day 24)
     // Create markdown for deployment steps
     let steps = "";
     response.deploymentSteps.split(";").forEach((step, i) => {
@@ -166,7 +164,7 @@ function writeToFile(response) {
     fs.writeFile("./README_temp.md", readmeTemplate(response), (err) => (err ? console.error(err) : console.log("success!")));
 }
 
-// TODO: Create a function to initialize app
+// Init function to start the app
 function init() {
     // Ask questions
     inquirer.prompt(questions).then((response) => {
