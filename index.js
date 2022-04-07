@@ -41,7 +41,13 @@ const questions = [
         type: "input",
         message: "What is your project title?\n",
         default: "My Cool Project",
-        name: "title"
+        name: "title",
+    },
+    {
+        type: "input",
+        message: "What is project the project URL?\n",
+        default: "https://github.com/qkeddy/dynamic-readme-generator",
+        name: "project",
     },
     {
         type: "input",
@@ -55,13 +61,13 @@ const questions = [
     },
     {
         type: "input",
-        message: "What are the steps required to deploy your project? Provide a step-by-step description of how to get the development environment running.\n",
+        message: "What are the steps required to deploy your project? Provide a step-by-step description of how to get the development environment running. Add a semicolon between each step.\n",
         default: "This project has no steps to deploy.",
-        name: "deploymentSteps"
+        name: "deploymentSteps",
     },
     {
         type: "input",
-        message: "Does your project have any special features? Add a semicolons between each feature.\n",
+        message: "Does your project have any special features? Add a semicolon between each feature.\n",
         default: "This project does not have any special features to highlight.",
         name: "features",
     },
@@ -73,7 +79,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "Are there any tests or test results that should be highlighted? Add a semicolons between each test.\n",
+        message: "Are there any tests or test results that should be highlighted? Add a semicolon between each test.\n",
         default: "There are currently no tests to share.",
         name: "tests",
     },
@@ -87,8 +93,8 @@ const questions = [
 ];
 
 // Define HTML template
-const readmeTemplate = ({ email, gitHubUrl, title, description, deploymentSteps, features, projectUse, tests, collaborators }) =>
-    `![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+const readmeTemplate = ({ email, gitHubUrl, title, project, description, deploymentSteps, features, projectUse, tests, collaborators }) =>
+    `![badmath](https://img.shields.io/github/license/${project.slice(19)})
 
 # ${title}
 
@@ -128,6 +134,35 @@ It is requested that all contributors adhere to the standards outlined in the [C
 
 // Write the HTML to a file
 function writeToFile(response) {
+    // Create markdown for deployment steps
+    let steps = "";
+    response.deploymentSteps.split(";").forEach((step, i) => {
+        steps += `${i + 1}. ${step}\n`;
+    });
+    response.deploymentSteps = steps;
+
+    // Create markdown for features
+    let features = "";
+    response.features.split(";").forEach((feature, i) => {
+        features += `- ${feature}\n`;
+    });
+    response.features = features;
+
+    // Create markdown for tests
+    let tests = "";
+    response.tests.split(";").forEach((test, i) => {
+        tests += `- ${test}\n`;
+    });
+    response.tests = tests;
+
+    // Create markdown for collaborators
+    let collaborators = "";
+    response.collaborators.split(";").forEach((collaborator, i) => {
+        item = collaborator.split("|");
+        collaborators += `- [${item[0]}](${item[1]})\n`;
+    });
+    response.collaborators = collaborators;
+
     fs.writeFile("./README_temp.md", readmeTemplate(response), (err) => (err ? console.error(err) : console.log("success!")));
 }
 
